@@ -8,7 +8,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class ImageParamTest {
 	public static void main(String[] args) throws Exception {
-		String key       = "bbafc7b2ff9c50921d909a95e53103e9";
+		String key       = "bbafc7b2ff9c50921d909a95e153103e9";
 		
 		
 		Cipher cipher    = Cipher.getInstance("DESede/ECB/NoPadding");
@@ -22,7 +22,7 @@ public class ImageParamTest {
 		String algorithm = "AES";
 		Cipher passwordCipher = Cipher.getInstance(algorithm);
 		passwordCipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(toBytes(key), algorithm));
-		String password = toHex(passwordCipher.doFinal("Tjm010101".getBytes()));
+		String password = toHex(passwordCipher.doFinal("test".getBytes()));
 		System.out.println(password);
 	}
 	

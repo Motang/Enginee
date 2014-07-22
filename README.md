@@ -1,4 +1,4 @@
 Enginee
 =======
 
-Personal research demo project
+Personal demo project

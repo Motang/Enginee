@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions targetNamespace="http://www.morly.com/wstest" name="Example" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.morly.com/wstest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://www.morly.com/wstest" schemaLocation="Example_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="toSayHello">
+    <part name="userName" type="xsd:string"/>
+  </message>
+  <message name="toSayHelloResponse">
+    <part name="returnWord" type="xsd:string"/>
+  </message>
+  <message name="sayHello">
+    <part name="person" type="tns:person"/>
+    <part name="arg1" type="xsd:string"/>
+  </message>
+  <message name="sayHelloResponse">
+    <part name="personList" type="tns:personArray"/>
+  </message>
+  <message name="HelloException">
+    <part name="fault" element="tns:HelloException"/>
+  </message>
+  <portType name="Example">
+    <operation name="toSayHello" parameterOrder="userName">
+      <input message="tns:toSayHello"/>
+      <output message="tns:toSayHelloResponse"/>
+    </operation>
+    <operation name="sayHello" parameterOrder="person arg1">
+      <input message="tns:sayHello"/>
+      <output message="tns:sayHelloResponse"/>
+      <fault name="HelloException" message="tns:HelloException"/>
+    </operation>
+  </portType>
+  <binding name="ExamplePortBinding" type="tns:Example">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc"/>
+    <operation name="toSayHello">
+      <soap:operation soapAction="toSayHello"/>
+      <input>
+        <soap:body use="literal" namespace="http://www.morly.com/wstest"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://www.morly.com/wstest"/>
+      </output>
+    </operation>
+    <operation name="sayHello">
+      <soap:operation soapAction="sayHello"/>
+      <input>
+        <soap:body use="literal" namespace="http://www.morly.com/wstest"/>
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://www.morly.com/wstest"/>
+      </output>
+      <fault name="HelloException">
+        <soap:fault name="HelloException" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+  <service name="Example">
+    <port name="ExamplePort" binding="tns:ExamplePortBinding">
+      <soap:address location="REPLACE_WITH_ACTUAL_URL"/>
+    </port>
+  </service>
+</definitions>
+

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.motang.engineer</groupId>
+	<artifactId>enginee</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	
+	<name>Enginee Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<dependencies>
+	    <dependency>
+	        <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.0.21.Final</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>io.netty</groupId>
+            <artifactId>netty-example</artifactId>
+            <version>4.0.21.Final</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+			<version>2.0.7</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+			<version>2.5</version>
+	    </dependency>
+	    <dependency>
+            <groupId>jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>1.7.6</version>
+        </dependency>
+	    <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+	    <dependency>
+            <groupId>com.ibm.db2.jcc</groupId>
+            <artifactId>db2jcc4</artifactId>
+            <version>1.0</version>
+        </dependency>
+	    
+	    <!-- for Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>2.5.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymockclassextension</artifactId>
+			<version>2.5.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<executions>
+					<execution>
+						<id>default-testCompile</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-compile</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<properties>
+		<spring.version>3.2.4.RELEASE</spring.version>
+	</properties>
+
+</project>

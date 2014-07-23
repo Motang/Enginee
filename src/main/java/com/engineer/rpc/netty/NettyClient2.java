@@ -23,18 +23,17 @@ import org.slf4j.LoggerFactory;
 import com.engineer.rpc.RPCClient;
 import com.engineer.rpc.RPCHello;
 
-public class NettyClient implements RPCClient {
-	static Logger logger = LoggerFactory.getLogger(NettyClient.class);
+public class NettyClient2 implements RPCClient {
+	static Logger logger = LoggerFactory.getLogger(NettyClient2.class);
 	
 	private String host;  
     private int port;
     private int timeout = 30000; //thirty seconds
     
     private Bootstrap b = new Bootstrap();
-    private Channel clientChannel;
     private EventLoopGroup group = new NioEventLoopGroup();
     
-	public NettyClient(String host, int port) {
+	public NettyClient2(String host, int port) {
 		super();
 		this.host = host;
 		this.port = port;
@@ -53,7 +52,7 @@ public class NettyClient implements RPCClient {
                     p.addLast(
                             new ObjectEncoder(),
                             new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
-                            new NettyClientChannelHandler(timeout));
+                            new NettyClientChannelHandler2(timeout));
                 }
             });
 
@@ -61,10 +60,12 @@ public class NettyClient implements RPCClient {
             ChannelFuture f = b.connect(host, port).sync();
             
             // Wait until the connection is closed.
-            clientChannel = f.channel();
+            Channel clientChannel = f.channel();
 			//clientChannel.closeFuture().sync();
             ChannelFuture closeFuture = clientChannel.closeFuture();
 			closeFuture.addListener(ChannelFutureListener.CLOSE);
+			
+			LOCAL.set(clientChannel);
 			//closeFuture.sync();
         } catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -82,44 +83,53 @@ public class NettyClient implements RPCClient {
 	
 	
 	public static void main(String[] args) {
-		NettyClient client = new NettyClient("localhost",8099);
+		NettyClient2 client = new NettyClient2("localhost",8099);
 		client.start();
 		
 		try {
-			final RPCHello proxy = NettyClientHelper.getProxy(client, RPCHello.class);
-		    Runnable target = new Runnable(){
-                @Override
-                public void run() {
-                    for (int i = 0; i < 5; i++) {
-                        System.err.println(proxy.sayHello("Morly"+i));
-//                        try {
-//                            TimeUnit.SECONDS.sleep(1);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-                    }
-                    System.err.println(proxy.sayHello("DONE"));
-                }};
-            Thread thread1 = new Thread(target, "Test1");
-            Thread thread2 = new Thread(target, "Test2");
-            Thread thread3 = new Thread(target, "Test3");
-            Thread thread4 = new Thread(target, "Test4");
-            Thread thread5 = new Thread(target, "Test5");
-            
-            thread1.start();
-            thread2.start();
-            thread3.start();
-            thread4.start();
-            thread5.start();
-            
-            thread1.join();
-            thread2.join();
-            thread3.join();
-            thread4.join();
-            thread5.join();
+//			final RPCHello proxy = NettyClientHelper.getProxy(client, RPCHello.class);
+//			String sayHello = proxy.sayHello("Test");
+//			System.out.println(sayHello);
+			
+			try {
+				final RPCHello proxy = NettyClientHelper.getProxy(client, RPCHello.class);
+			    Runnable target = new Runnable(){
+	                @Override
+	                public void run() {
+	                    for (int i = 0; i < 5; i++) {
+	                    	logger.info("Print Resut ------- {}", proxy.sayHello(Thread.currentThread().getName()+"-Morly"+i));
+//	                        try {
+//	                            TimeUnit.SECONDS.sleep(1);
+//	                        } catch (InterruptedException e) {
+//	                            e.printStackTrace();
+//	                        }
+	                    }
+	                    logger.info("Print Resut ------- {}", proxy.sayHello("DONE"));
+	                }};
+	            Thread thread1 = new Thread(target, "Test1");
+	            Thread thread2 = new Thread(target, "Test2");
+	            Thread thread3 = new Thread(target, "Test3");
+	            Thread thread4 = new Thread(target, "Test4");
+	            Thread thread5 = new Thread(target, "Test5");
+	            
+	            thread1.start();
+	            thread2.start();
+	            thread3.start();
+	            thread4.start();
+	            thread5.start();
+	            
+	            thread1.join();
+	            thread2.join();
+	            thread3.join();
+	            thread4.join();
+	            thread5.join();
+			} catch (Exception e) {
+				// TODO: handle exception
+				logger.debug("",e);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			logger.debug("",e);
+			logger.error("",e);
 		}
 		
 		//TimeUnit.SECONDS.sleep(1);
@@ -132,15 +142,20 @@ public class NettyClient implements RPCClient {
 		//proxy.sayHello("Done agagin");
 	}
 	
+	private static final ThreadLocal<Channel> LOCAL = new ThreadLocal<Channel>();
+	
 	@Override
 	public <T> T send(T msg) throws Exception {
-	    if (!clientChannel.isActive()) {
-	        System.err.println("=======");
+		Channel clientChannel = LOCAL.get();
+	    if (clientChannel == null || !clientChannel.isActive()) {
+	    	logger.info("create new channel=========");
 	        ChannelFuture f = b.connect(host, port).sync();
 	        clientChannel = f.channel();
 	        clientChannel.closeFuture().addListener(ChannelFutureListener.CLOSE);
+	        
+	        LOCAL.set(clientChannel);
 	    }
-		NettyClientChannelHandler handler = clientChannel.pipeline().get(NettyClientChannelHandler.class);
+	    NettyClientChannelHandler2 handler = clientChannel.pipeline().get(NettyClientChannelHandler2.class);
 		T send = handler.send(msg);
 		
 		return send;

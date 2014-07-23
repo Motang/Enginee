@@ -91,14 +91,14 @@ public class NettyClient implements RPCClient {
                 @Override
                 public void run() {
                     for (int i = 0; i < 5; i++) {
-                        System.err.println(proxy.sayHello("Morly"+i));
+                        System.err.println(proxy.sayHello(Thread.currentThread().getName()+"-Morly"+i));
 //                        try {
 //                            TimeUnit.SECONDS.sleep(1);
 //                        } catch (InterruptedException e) {
 //                            e.printStackTrace();
 //                        }
                     }
-                    System.err.println(proxy.sayHello("DONE"));
+                    System.err.println(proxy.sayHello(Thread.currentThread().getName()+"-DONE"));
                 }};
             Thread thread1 = new Thread(target, "Test1");
             Thread thread2 = new Thread(target, "Test2");

@@ -1,5 +1,10 @@
 package com.engineer.main;
 
+import java.util.Random;
+
+import org.apache.commons.lang.math.NumberUtils;
+import org.apache.commons.lang.math.RandomUtils;
+
 
 public class TestMain {
 	public static void main(String[] args) {
@@ -63,6 +68,8 @@ public class TestMain {
 		System.out.println(1<<3|1<<4);
 		System.out.println(24&4);
 		System.out.println(24&8);
+		
+		System.err.println(Math.round(new Random().nextDouble() * 2));
 		
 	}
 }

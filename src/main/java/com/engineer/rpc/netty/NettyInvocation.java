@@ -9,12 +9,20 @@ public class NettyInvocation implements RPCInvocation,Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	private String id;
 	private Class<?> interfaces;
 	private String method;
 	private Class<?> methodParameterTypes[];
 	private Object[] params;
 	private Object result;
 	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	/**
 	 * @return the result
 	 */

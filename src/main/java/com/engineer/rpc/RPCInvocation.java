@@ -5,6 +5,7 @@ public interface RPCInvocation {
 	 * @return the result
 	 */
 	public Object getResult();
+	public String getId();
 	
 	public void setResult(Object value);
 	

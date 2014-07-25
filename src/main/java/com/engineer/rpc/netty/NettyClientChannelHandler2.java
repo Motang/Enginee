@@ -1,21 +1,18 @@
 package com.engineer.rpc.netty;
 
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 import io.netty.util.ReferenceCountUtil;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.FutureListener;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
-import org.apache.shiro.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,8 +32,9 @@ public class NettyClientChannelHandler2 extends ChannelInboundHandlerAdapter {
 	private int timeout = 30000; //three seconds
 	
 
-	private Map<String, Object> result = new HashMap<String, Object>();
-	private ChannelPromise promise;
+	private Map<String, Object> result = new ConcurrentHashMap<String, Object>();
+	
+	private Map<String, ChannelPromise> promiseMaps = new ConcurrentHashMap<String, ChannelPromise>();
 	
 	private Channel channel;
 	
@@ -63,10 +61,11 @@ public class NettyClientChannelHandler2 extends ChannelInboundHandlerAdapter {
 		try {
 			RPCInvocation invo = (RPCInvocation) msg;
 			logger.debug("Read {}", invo.getResult());
-			result.put(getKey(invo), invo);
+			result.put(invo.getId(), invo);
 			
-			promise.setSuccess();
-			//client.notified();
+			ChannelPromise channelPromise = promiseMaps.get(invo.getId());
+			channelPromise.setSuccess();
+			
 		} finally {
 			ReferenceCountUtil.release(msg);
 			
@@ -74,17 +73,8 @@ public class NettyClientChannelHandler2 extends ChannelInboundHandlerAdapter {
 
 	}
 
-	private String getKey(RPCInvocation invo) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(invo.getInterfaces().getName());
-		sb.append("-").append(invo.getMethod());
-		sb.append("-").append(StringUtils.toString(invo.getMethodParameterTypes()));
-		sb.append("-").append(StringUtils.toString(invo.getParams()));
-		return sb.toString();
-	}
-
 	public Object getResult(RPCInvocation invo) {
-		return result.get(getKey(invo));
+		return result.get(invo.getId());
 	}
 
 	@Override
@@ -106,7 +96,18 @@ public class NettyClientChannelHandler2 extends ChannelInboundHandlerAdapter {
 	
 	public <T> T send(T msg) {
 		logger.debug("send {}", msg);
-		promise = channel.newPromise();
+		final RPCInvocation request = (RPCInvocation) msg;
+		
+		ChannelPromise promise = channel.newPromise();
+		promise.addListener(new FutureListener<Object>() {
+			@Override
+			public void operationComplete(Future<Object> future) throws Exception {
+				promiseMaps.remove(request.getId());
+				
+			}
+		});
+		
+		promiseMaps.put(request.getId(), promise);
 		
 		channel.writeAndFlush(msg);
 		
@@ -117,6 +118,7 @@ public class NettyClientChannelHandler2 extends ChannelInboundHandlerAdapter {
 			e.printStackTrace();
 		}
 		
-		return (T) getResult((RPCInvocation) msg);
+		
+		return (T) getResult(request);
 	}
 }

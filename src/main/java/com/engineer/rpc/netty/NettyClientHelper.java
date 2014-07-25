@@ -3,6 +3,7 @@ package com.engineer.rpc.netty;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.UUID;
 
 import com.engineer.rpc.RPCClient;
 
@@ -15,6 +16,7 @@ public class NettyClientHelper {
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
 				NettyInvocation invo = new NettyInvocation();
+				invo.setId(UUID.randomUUID().toString());
 				invo.setInterfaces(clazz);
 				invo.setMethod(method.getName());
 				invo.setMethodParameterTypes(method.getParameterTypes());
@@ -31,5 +33,4 @@ public class NettyClientHelper {
 		T t = (T) Proxy.newProxyInstance(NettyClientHelper.class.getClassLoader(), new Class<?>[] { clazz }, handler);
 		return t;
 	}
-	
 }

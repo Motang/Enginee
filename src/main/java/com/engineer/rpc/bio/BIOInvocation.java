@@ -16,8 +16,15 @@ public class BIOInvocation implements RPCInvocation,Serializable{
 	private Class<?> methodParameterTypes[];
 	private Object[] params;
 	private Object result;
+	private String id;
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	/**
 	 * @return the result
 	 */

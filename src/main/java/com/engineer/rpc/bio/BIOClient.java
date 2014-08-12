@@ -13,6 +13,7 @@ import javax.net.SocketFactory;
 
 import com.engineer.rpc.RPCClient;
 import com.engineer.rpc.RPCHello;
+import com.engineer.rpc.impl.RPCInvocationImpl;
 
 public class BIOClient implements RPCClient{
 	private String host;  
@@ -46,13 +47,13 @@ public class BIOClient implements RPCClient{
 		InvocationHandler handler = new InvocationHandler() {
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-				BIOInvocation invo = new BIOInvocation();
+				RPCInvocationImpl invo = new RPCInvocationImpl();
 				invo.setInterfaces(clazz);
 				invo.setMethod(method.getName());
 				invo.setMethodParameterTypes(method.getParameterTypes());
 				invo.setParams(args);
 				
-				BIOInvocation result = client.send(invo);
+				RPCInvocationImpl result = client.send(invo);
 				
 				return result.getResult();
 			}

@@ -1,11 +1,11 @@
-package com.engineer.rpc.bio;
+package com.engineer.rpc.impl;
 
 import java.io.Serializable;
 import java.util.Arrays;
 
 import com.engineer.rpc.RPCInvocation;
 
-public class BIOInvocation implements RPCInvocation,Serializable{
+public class RPCInvocationImpl implements RPCInvocation, Serializable{
 	/**
 	 * 
 	 */
@@ -83,5 +83,4 @@ public class BIOInvocation implements RPCInvocation,Serializable{
 	public String toString() {
 		return interfaces.getName()+"."+method+"("+Arrays.toString(params)+")";
 	}
-	
 }

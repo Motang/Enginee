@@ -16,6 +16,7 @@ target/
 .settings/
 bin/
 cache/
+study/
 log/*log*
 /.classpath
 /.project

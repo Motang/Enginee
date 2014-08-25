@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.junit.Test;
-
 public class AtomicIntegerTest {
 
 	/* 
@@ -22,7 +20,7 @@ public class AtomicIntegerTest {
 	 * 或者变量当前值，为该值+1/-1，然后写回新的值。在没有额外资源可以利用的情况下，只能使用加锁才能保证读-改-写这三个操作时“原子性”的。
 	 */
 
-	@Test
+	//@Test
 	public void testAll() throws InterruptedException {
 		final AtomicInteger value = new AtomicInteger(10);
 		assertEquals(value.compareAndSet(1, 2), false);
@@ -58,7 +56,7 @@ public class AtomicIntegerTest {
 
 	
 	int value = 0;
-	@Test
+	//@Test
 	public void compare() throws InterruptedException {
 		final int threadSize = 100000;
 		Thread[] ts = new Thread[threadSize];

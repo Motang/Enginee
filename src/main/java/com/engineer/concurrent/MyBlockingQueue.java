@@ -6,8 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class MyBlockingQueue extends Thread {
-	public static BlockingQueue<String> queue = new LinkedBlockingQueue<String>(
-			3);
+	public static BlockingQueue<String> queue = new LinkedBlockingQueue<String>(3);
 	private int index;
 
 	public MyBlockingQueue(int i) {

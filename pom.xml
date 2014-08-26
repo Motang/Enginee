@@ -122,6 +122,7 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			<!-- FindBugs -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
@@ -135,11 +136,22 @@
 					<findbugsXmlOutputDirectory>target/site</findbugsXmlOutputDirectory>
 				</configuration>
 			</plugin>
+			<!-- Checkstyle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.12.1</version>
+                <configuration>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
 	<properties>
 		<spring.version>3.2.4.RELEASE</spring.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<checkstyle.config.location>checkstyle/checkstyle-checker.xml</checkstyle.config.location>
 	</properties>
 
 </project>

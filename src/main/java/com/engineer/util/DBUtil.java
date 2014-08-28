@@ -219,13 +219,13 @@ and d.ACCTCODE like ('3220.%')
 				);
 //		importByEXL2 ( cn, "C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\agt_code中介机构信息表_updated on 27 Jul.xls", 
 //				"agt_code", 10,  519, 1);
-		importByEXL2 ( cn, "C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\Plan_infor险种代码�?20120730.xls", 
+		importByEXL2 ( cn, "C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\Plan_infor险种代码?20120730.xls", 
 				"plan_info", 16,  680, 1);
 		/*
-		 * 请把您系统里面所用的险种代码表�?
-		 * 中介机构信息表�?
+		 * 请把您系统里面所用的险种代码表?
+		 * 中介机构信息表?
 		 * 员工信\
-		 * 银保专管员信息表发给我，谢谢�?
+		 * 银保专管员信息表发给我，谢谢?
 		 */
 //		String sql_plan_info  = " select * from plan_info ";
 //		String sql_agt_code   = " select * from agt_code ";
@@ -245,32 +245,32 @@ and d.ACCTCODE like ('3220.%')
 //				 , "nb_system"
 //				 , "nb_system"
 //				);
-//		importByEXL2 ( cn, "C:\\Documents and Settings\\b3wang\\桌面\\新建文件�?(3)\\副本plancode(PA提额) 0808 去除金卡.xls", "nb_sponsor_plancode_info ", 9,  91, 1);
+//		importByEXL2 ( cn, "C:\\Documents and Settings\\b3wang\\桌面\\新建文件?(3)\\副本plancode(PA提额) 0808 去除金卡.xls", "nb_sponsor_plancode_info ", 9,  91, 1);
 //		importByEXL2 ( cn, "C:\\plancode(FW PA调额).xls", "nb_sponsor_plancode_info", 9,  11, 1);
 		/*
 
-//1   JHKJ002    缴费信息�? 应缴日期、到账日期和保单生效日期都在规定时间区间以前    18  
+//1   JHKJ002    缴费信息? 应缴日期、到账日期和保单生效日期都在规定时间区间以前    18  
 String T1_CGHB="select * from CGHB_Prem_info where Payab_Date < '2012-01-01' and  Gained_Date < '2012-01-01' and Eff_Date <  '2012-01-01'";
 doSQL2EXL(cn, "C:\\0726\\T1_CGHB.xls", T1_CGHB);
 String T1_CICAP="select * from CICAP_Prem_info where Payab_Date < '2012-01-01' and  Gained_Date < '2012-01-01' and Eff_Date <  '2012-01-01'";
 doSQL2EXL(cn, "C:\\0726\\T1_CICAP.xls", T1_CICAP);
 String T1_IPMI="select * from IPMI_Prem_info where Payab_Date < '2012-01-01' and  Gained_Date < '2012-01-01' and Eff_Date <  '2012-01-01'";
 doSQL2EXL(cn, "C:\\0726\\T1_IPMI.xls", T1_IPMI);System.out.println("====>1");
-//2   JHKJ002    缴费信息�? 应缴日期、到账日期和保单生效日期都在规定时间区间末以�? 45  
+//2   JHKJ002    缴费信息? 应缴日期、到账日期和保单生效日期都在规定时间区间末以? 45  
 String T2_CGHB="select * from CGHB_Prem_info where Payab_Date > '2012-03-31 23:59:59' and Gained_Date > '2012-03-31 23:59:59' and  Eff_Date > '2012-03-31 23:59:59'";
 doSQL2EXL(cn, "C:\\0726\\T2_CGHB.xls", T2_CGHB);
 String T2_CICAP="select * from CICAP_Prem_info where Payab_Date > '2012-03-31 23:59:59' and Gained_Date > '2012-03-31 23:59:59' and  Eff_Date > '2012-03-31 23:59:59'";
 doSQL2EXL(cn, "C:\\0726\\T2_CICAP.xls", T2_CICAP);
 String T2_IPMI="select * from IPMI_Prem_info where Payab_Date > '2012-03-31 23:59:59' and Gained_Date > '2012-03-31 23:59:59' and  Eff_Date > '2012-03-31 23:59:59'";
 doSQL2EXL(cn, "C:\\0726\\T2_IPMI.xls", T2_IPMI);System.out.println("====>1");
-//3   JHKJ005    报案信息�? 险种代码在险种代码表中不存在或为�?195 
+//3   JHKJ005    报案信息? 险种代码在险种代码表中不存在或为?195 
 String T3_CGHB="select * from CGHB_claim_report  ct where ct.Plan_Code is null or not exists(select distinct  1 from Plan_info where ct.Plan_Code = Plan_info.Plan_Code) ";
 doSQL2EXL(cn, "C:\\0726\\T3_CGHB.xls", T3_CGHB);
 String T3_IPMI="select * from IPMI_claim_report  ct where ct.Plan_Code is null or not exists(select distinct  1 from Plan_info where ct.Plan_Code = Plan_info.Plan_Code) ";
 doSQL2EXL(cn, "C:\\0726\\T3_IPMI.xls", T3_IPMI);
 String T3_CICAP="select * from NCS_claim_report  ct where ct.Plan_Code is null or not exists(select distinct  1 from Plan_info where ct.Plan_Code = Plan_info.Plan_Code) ";
 doSQL2EXL(cn, "C:\\0726\\T3_CICAP.xls", T3_CICAP);System.out.println("====>1");
-//4   JHWZ005    新保单信息表- �?��渠道为代理或经纪业务时，中介机构代码在中介机构信息表中不存在或为�?96  
+//4   JHWZ005    新保单信息表- ?渠道为代理或经纪业务时，中介机构代码在中介机构信息表中不存在或为?96  
 String T4_CGHB="select * from CGHB_Pol_Main where (Agt_Code is null or Agt_Code = '' or not exists(select distinct  1 from agt_code where CGHB_Pol_Main.Agt_Code = agt_code.Agt_Code)) and Busi_Src_Type in('220','221','229','230','300')";
 doSQL2EXL(cn, "C:\\0726\\T4_CGHB.xls", T4_CGHB);
 String T4_CICAP="select * from CICAP_Pol_Main where (Agt_Code is null or Agt_Code = '' or not exists(select distinct  1 from agt_code where CICAP_Pol_Main.Agt_Code = agt_code.Agt_Code)) and Busi_Src_Type in('220','221','229','230','300')";
@@ -284,118 +284,118 @@ String T5_CICAP="select * from CICAP_Pol_Main where Agt_Code is not null and Agt
 doSQL2EXL(cn, "C:\\0726\\T5_CICAP.xls", T5_CICAP);
 String T5_IPMI="select * from IPMI_Pol_Main where Agt_Code is not null and Agt_Code != '' and not exists ( select distinct  Agt_Code from agt_code where IPMI_Pol_Main.Agt_Code = AGT_CODE.AGT_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T5_IPMI.xls", T5_IPMI);System.out.println("====>1");
-//6   JHWZ006    缴费信息�? 中介机构代码在中介机构信息表中不存在   234 
+//6   JHWZ006    缴费信息? 中介机构代码在中介机构信息表中不存在   234 
 String T6_CGHB="select * from CGHB_Prem_info where Agt_Code is not null and Agt_Code != ''  and not exists( select distinct  Agt_Code from agt_code where CGHB_Prem_info.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0726\\T6_CGHB.xls", T6_CGHB);
 String T6_CICAP="select * from CICAP_Prem_info where Agt_Code is not null and Agt_Code != ''  and not exists( select distinct  Agt_Code from agt_code where CICAP_Prem_info.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0726\\T6_CICAP.xls", T6_CICAP);
 String T6_IPMI="select * from IPMI_Prem_info where Agt_Code is not null and Agt_Code != ''  and not exists( select distinct  Agt_Code from agt_code where IPMI_Prem_info.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0726\\T6_IPMI.xls", T6_IPMI);System.out.println("====>1");
-//7   JHWZ006    缴费信息�? 营销员代码在营销员信息表中不存在  372585 
+//7   JHWZ006    缴费信息? 营销员代码在营销员信息表中不存在  372585 
 //select distinct  Salesman_No from Prem_Info where Salesman_No is not null and Salesman_No != '' and not exists( select distinct  Salesman_No from Salesman_info where PREM_INFO.Salesman_No = SALESMAN_INFO.SALESMAN_NO) 
-//8   JHWZ006    缴费信息�? 银保专管员代码在银保专管员信息表中不存在   473 
+//8   JHWZ006    缴费信息? 银保专管员代码在银保专管员信息表中不存在   473 
 String T8_CGHB="select * from CGHB_Prem_info where Speciman_No is not null and Speciman_No != '' and not exists( select distinct 1 Banc_Speci_No from Banc_Speci_Info where CGHB_Prem_info.Speciman_No = BANC_SPECI_INFO.BANC_SPECI_NO)";
 doSQL2EXL(cn, "C:\\0726\\T8_CGHB.xls", T8_CGHB);
 String T8_CICAP="select * from CICAP_Prem_info where Speciman_No is not null and Speciman_No != '' and not exists( select distinct 1 Banc_Speci_No from Banc_Speci_Info where CICAP_Prem_info.Speciman_No = BANC_SPECI_INFO.BANC_SPECI_NO)";
 doSQL2EXL(cn, "C:\\0726\\T8_CICAP.xls", T8_CICAP);
 String T8_IPMI="select * from IPMI_Prem_info where Speciman_No is not null and Speciman_No != '' and not exists( select distinct 1 Banc_Speci_No from Banc_Speci_Info where IPMI_Prem_info.Speciman_No = BANC_SPECI_INFO.BANC_SPECI_NO)";
 doSQL2EXL(cn, "C:\\0726\\T8_IPMI.xls", T8_IPMI);System.out.println("====>1");
-//9   JHWZ006    缴费信息�? 员工代码若不为空：员工代码在员工信息表中不存在�?应付员工绩效凭证号在财务凭证信息表中不存在或为空、员工直接绩效比例小于等于零   353172 
+//9   JHWZ006    缴费信息? 员工代码若不为空：员工代码在员工信息表中不存在?应付员工绩效凭证号在财务凭证信息表中不存在或为空、员工直接绩效比例小于等于零   353172 
 String T9_CGHB="select * from CGHB_Prem_info where Staff_No is not null and Staff_No != '' and not exists(select distinct  1 from Staff_Info where CGHB_Prem_info.Staff_No = Staff_Info.Staff_No) ";
 doSQL2CSVByRows(cn, "C:\\0726\\T9_CGHB.xls", T9_CGHB,20000);
 String T9_CICAP="select * from CICAP_Prem_info where Staff_No is not null and Staff_No != '' and not exists(select distinct  1 from Staff_Info where CICAP_Prem_info.Staff_No = Staff_Info.Staff_No) ";
 doSQL2CSVByRows(cn, "C:\\0726\\T9_CICAP.xls", T9_CICAP,20000);
 String T9_IPMI="select * from IPMI_Prem_info where Staff_No is not null and Staff_No != '' and not exists(select distinct  1 from Staff_Info where IPMI_Prem_info.Staff_No = Staff_Info.Staff_No) ";
 doSQL2CSVByRows(cn, "C:\\0726\\T9_IPMI.xls", T9_IPMI,20000);System.out.println("====>1");
-//10  JHWZ006    缴费信息�? 新单期缴保费收入年期类型在新单期缴保费年期代码表中不存在或为�?  249 
+//10  JHWZ006    缴费信息? 新单期缴保费收入年期类型在新单期缴保费年期代码表中不存在或为?  249 
 String T10_CGHB="select * from CGHB_Prem_info where not exists( select distinct  1 from New_Business_Info where CGHB_Prem_info.New_busi_Code = NEW_BUSINESS_INFO.P)";
 doSQL2EXL(cn, "C:\\0726\\T10_CGHB.xls", T10_CGHB);
 String T10_CICAP="select * from CICAP_Prem_info where not exists( select distinct  1 from New_Business_Info where CICAP_Prem_info.New_busi_Code = NEW_BUSINESS_INFO.P)";
 doSQL2EXL(cn, "C:\\0726\\T10_CICAP.xls", T10_CICAP);
 String T10_IPMI="select * from IPMI_Prem_info where not exists( select distinct  1 from New_Business_Info where IPMI_Prem_info.New_busi_Code = NEW_BUSINESS_INFO.P)";
 doSQL2EXL(cn, "C:\\0726\\T10_IPMI.xls", T10_IPMI);System.out.println("====>1");
-//11  JHWZ007    批单信息�? 险种代码在险种代码表中不存在或为�?33535  
+//11  JHWZ007    批单信息? 险种代码在险种代码表中不存在或为?33535  
 String T11_CICAP="select * from CICAP_Endo_Fee where not exists( select distinct  1 from Plan_info where CICAP_Endo_Fee.Plan_Code = PLAN_INFO.PLAN_CODE) ";
 doSQL2CSVByRows(cn, "C:\\0726\\T11_CICAP.xls", T11_CICAP,20000);
 String T11_IPMI="select * from IPMI_Endo_Fee where not exists( select distinct  1 from Plan_info where IPMI_Endo_Fee.Plan_Code = PLAN_INFO.PLAN_CODE) ";
 doSQL2CSVByRows(cn, "C:\\0726\\T11_IPMI.xls", T11_IPMI,20000);System.out.println("====>1");
-//12  JHWZ007    批单信息�? 中介机构代码在中介机构信息表中不存在   396 
+//12  JHWZ007    批单信息? 中介机构代码在中介机构信息表中不存在   396 
 String T12_CICAP="select * from CICAP_Endo_Fee where Agt_Code is not null and Agt_Code != '' and not exists( select distinct  Agt_Code from agt_code where CICAP_Endo_Fee.Agt_Code = AGT_CODE.AGT_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T12_CICAP.xls", T12_CICAP);
 String T12_IPMI="select * from IPMI_Endo_Fee where Agt_Code is not null and Agt_Code != '' and not exists( select distinct  Agt_Code from agt_code where IPMI_Endo_Fee.Agt_Code = AGT_CODE.AGT_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T12_IPMI.xls", T12_IPMI);System.out.println("====>1");
-//13  JHWZ007    批单信息�? 营销员代码在营销员信息表中不存在  1488713    
+//13  JHWZ007    批单信息? 营销员代码在营销员信息表中不存在  1488713    
 //select * from Endo_Fee where Salesman_No is not null and Salesman_No != '' and not exists ( select distinct  1 from Salesman_info where Endo_Fee.Salesman_No = SALESMAN_INFO.SALESMAN_NO)
-//14  JHWZ007    批单信息�? 银保专管员代码在银保专管员信息表中不存在   5294   
+//14  JHWZ007    批单信息? 银保专管员代码在银保专管员信息表中不存在   5294   
 String T14_CICAP="select * from CICAP_Endo_Fee where Speciman_No is not null and Speciman_No != '' and not exists( select distinct  1 from Banc_Speci_Info where CICAP_Endo_Fee.Speciman_No = BANC_SPECI_INFO.BANC_SPECI_NO)";
 doSQL2EXL(cn, "C:\\0726\\T14_CICAP.xls", T14_CICAP);
 String T14_IPMI="select * from IPMI_Endo_Fee where Speciman_No is not null and Speciman_No != '' and not exists( select distinct  1 from Banc_Speci_Info where IPMI_Endo_Fee.Speciman_No = BANC_SPECI_INFO.BANC_SPECI_NO)";
 doSQL2EXL(cn, "C:\\0726\\T14_IPMI.xls", T14_IPMI);System.out.println("====>1");
-//15  JHWZ007    批单信息�? 员工代码在员工信息表中不存在  71104  
+//15  JHWZ007    批单信息? 员工代码在员工信息表中不存在  71104  
 String T15_CICAP="select * from  CICAP_Endo_Fee where Staff_No is not null and Staff_No != '' and not exists( select distinct  1 from Staff_Info where CICAP_Endo_Fee.Staff_No = STAFF_INFO.STAFF_NO)";
 doSQL2CSVByRows(cn, "C:\\0726\\T15_CICAP.xls", T15_CICAP,20000);
 String T15_IPMI="select * from  IPMI_Endo_Fee where Staff_No is not null and Staff_No != '' and not exists( select distinct  1 from Staff_Info where IPMI_Endo_Fee.Staff_No = STAFF_INFO.STAFF_NO)";
 doSQL2CSVByRows(cn, "C:\\0726\\T15_IPMI.xls", T15_IPMI,20000);System.out.println("====>1");
-//16  JHWZ007    批单信息�? 投保日期、保单生效日期�?发生日期（批改日期）、批单生效日期为�?  47  
+//16  JHWZ007    批单信息? 投保日期、保单生效日期?发生日期（批改日期）、批单生效日期为?  47  
 String T16_CICAP="select * from  CICAP_Endo_Fee where App_Date is null or Pol_Eff_Date is null or Edr_Eff_Date is null or Proc_Date is null ";
 doSQL2EXL(cn, "C:\\0726\\T16_CICAP.xls", T16_CICAP);
 String T16_IPMI="select * from  IPMI_Endo_Fee where App_Date is null or Pol_Eff_Date is null or Edr_Eff_Date is null or Proc_Date is null ";
 doSQL2EXL(cn, "C:\\0726\\T16_IPMI.xls", T16_IPMI);System.out.println("====>1");
-//17  JHWZ007    批单信息�? 批文、投保人证件号码、被保人名称为空   1488698    (批文除外)
+//17  JHWZ007    批单信息? 批文、投保人证件号码、被保人名称为空   1488698    (批文除外)
 String T17_CICAP="select * from  CICAP_Endo_Fee where App_Idcard_No is null or InsName is null ";
 doSQL2CSVByRows(cn, "C:\\0726\\T17_CICAP.xls", T17_CICAP,20000);
 String T17_IPMI="select * from  IPMI_Endo_Fee where  App_Idcard_No is null or InsName is null ";
 doSQL2CSVByRows(cn, "C:\\0726\\T17_IPMI.xls", T17_IPMI,20000);System.out.println("====>1");
-//18  JHWZ007    批单信息�? 非现金收款方式的对方银行账号为空  1488698    （另，修改程序）
+//18  JHWZ007    批单信息? 非现金收款方式的对方银行账号为空  1488698    （另，修改程序）
 //select * from  Endo_Fee where (Bank_account_code is null or Bank_account_code='') and CollectPay_Way_Code != '1'
-//19  JHWZ009    报案信息�? 机构代码在分支机构信息表中不存在或为�?195 
+//19  JHWZ009    报案信息? 机构代码在分支机构信息表中不存在或为?195 
 String T19_CGHB="select * from CGHB_claim_report where not exists (select distinct  Branch_Code from Branch_Info where CGHB_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T19_CGHB.xls", T19_CGHB);
 String T19_IPMI="select * from IPMI_claim_report where not exists (select distinct  Branch_Code from Branch_Info where IPMI_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T19_IPMI.xls", T19_IPMI);
 String T19_CICAP="select * from NCS_claim_report where not exists (select distinct  Branch_Code from Branch_Info where NCS_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T19_CICAP.xls", T19_CICAP);System.out.println("====>1");
-//20  JHWZ010    赔案信息�? 机构代码在分支机构信息表中不存在或为�?125 
+//20  JHWZ010    赔案信息? 机构代码在分支机构信息表中不存在或为?125 
 String T20_CGHB="select * from CGHB_claim_report where not exists( select distinct  1 from Branch_Info where CGHB_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T20_CGHB.xls", T20_CGHB);
 String T20_IPMI="select * from IPMI_claim_report where not exists( select distinct  1 from Branch_Info where IPMI_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T20_IPMI.xls", T20_IPMI);
 String T20_CICAP="select * from NCS_claim_report where not exists( select distinct  1 from Branch_Info where NCS_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE)";
 doSQL2EXL(cn, "C:\\0726\\T20_CICAP.xls", T20_CICAP);System.out.println("====>1");
-//21  JHWZ010    赔案信息�? 到账日期在取数区间内的应付赔款凭证号，在财务凭证表中不存�? 6029   
+//21  JHWZ010    赔案信息? 到账日期在取数区间内的应付赔款凭证号，在财务凭证表中不存? 6029   
 //select * from claim_main where Gained_Date between '2012-01-01'and '2012-03-31 23:59:59' and Payab_Amt_cnvt is not null and Payab_Amt_cnvt != 0 and not exists( select distinct  1 from Voucher_Info where CLAIM_MAIN.Payab_Vou_Code = VOUCHER_INFO.VOUCHER_CODE)
-//22  JHWZ010    赔案信息�? 到账日期在取数区间内的实付赔款凭证号，在财务凭证表中不存�? 6029   
+//22  JHWZ010    赔案信息? 到账日期在取数区间内的实付赔款凭证号，在财务凭证表中不存? 6029   
 //select * from claim_main where Gained_Date between '2012-01-01'and '2012-03-31 23:59:59' and Paid_Amt_cnvt is not null and Paid_Amt_cnvt != 0 and not exists( select distinct  1  from Voucher_Info where CLAIM_MAIN.Paid_Vou_Code = VOUCHER_INFO.VOUCHER_CODE)
-//23  JHWZ010    赔案信息�? �?��渠道为直�?��，员工代码为�?1894   
+//23  JHWZ010    赔案信息? ?渠道为直?，员工代码为?1894   
 String T23_CGHB="select * from CGHB_claim_main where (Staff_No is null or Staff_No='') and Busi_Src_Type like ('1%')";
 doSQL2EXL(cn, "C:\\0726\\T23_CGHB.xls", T23_CGHB);
 String T23_IPMI="select * from IPMI_claim_main where (Staff_No is null or Staff_No='') and Busi_Src_Type like ('1%')";
 doSQL2EXL(cn, "C:\\0726\\T23_IPMI.xls", T23_IPMI);
 String T23_CICAP="select * from NCS_claim_main where (Staff_No is null or Staff_No='') and Busi_Src_Type like ('1%')";
 doSQL2EXL(cn, "C:\\0726\\T23_CICAP.xls", T23_CICAP);System.out.println("====>1");
-//24  JHWZ010    赔案信息�? 非现金收款方式的对方银行账号为空  619 
+//24  JHWZ010    赔案信息? 非现金收款方式的对方银行账号为空  619 
 String T24_CGHB="select * from CGHB_claim_main where (Pay_account_code is null or Pay_account_code='') and CollectPay_Code != '1'";
 doSQL2EXL(cn, "C:\\0726\\T24_CGHB.xls", T24_CGHB);
 String T24_IPMI="select * from IPMI_claim_main where (Pay_account_code is null or Pay_account_code='') and CollectPay_Code != '1'";
 doSQL2EXL(cn, "C:\\0726\\T24_IPMI.xls", T24_IPMI);
 String T24_CICAP="select * from NCS_claim_main where (Pay_account_code is null or Pay_account_code='') and CollectPay_Code != '1'";
 doSQL2EXL(cn, "C:\\0726\\T24_CICAP.xls", T24_CICAP);System.out.println("====>1");
-//25  JHWZ011    单证信息�? 单证代码在单证代码表中不存在或为�?160000 
+//25  JHWZ011    单证信息? 单证代码在单证代码表中不存在或为?160000 
 //select * from Bill_Info where not exists( select distinct  1 from Bill_Code_Info where BILL_INFO.Bill_Code = BILL_CODE_INFO.BILL_CODE)
-//26  JHWZ011    单证信息�? 使用机构代码在分支机构信息表中不存在或为�?5535332    
+//26  JHWZ011    单证信息? 使用机构代码在分支机构信息表中不存在或为?5535332    
 //select * from Bill_Info where not exists( select distinct  1 from Branch_Info  where BILL_INFO.Branch_Code = BRANCH_INFO.BRANCH_CODE)
-//27  JHWZ012    财务凭证信息�? 没有期初余额记录  1   
+//27  JHWZ012    财务凭证信息? 没有期初余额记录  1   
 String T27="select * from voucher_info where Is_Original = 'Y'";
 doSQL2EXL(cn, "C:\\0726\\T27.xls", T27);
-//28  JHWZ012    险种代码�? 停止�?��日期存在空�?,或日期关系不正确  5   
+//28  JHWZ012    险种代码? 停止?日期存在空?,或日期关系不正确  5   
 String T28="select * from plan_info where StopDate is null or Startdate < stopdate";
 doSQL2EXL(cn, "C:\\0726\\T28.xls", T28);
-//29  JHWZ012    中介机构信息�? 获得许可证日期�?许可证到期日期�?签约日期、协议到期日存在空�?,或日期关系不正确 444 
+//29  JHWZ012    中介机构信息? 获得许可证日期?许可证到期日期?签约日期、协议到期日存在空?,或日期关系不正确 444 
 String T29="select * from AGT_CODE where  STARTDATE IS NULL OR STARTDATE>=ENDDATE OR ENDDATE IS NULL OR SIGNDATE = '1900-01-01' OR QUITDATE ='1900-01-01' OR SIGNDATE IS NULL OR QUITDATE IS NULL ";
 doSQL2EXL(cn, "C:\\0726\\T29.xls", T29);System.out.println("====>1");
-//30  JHWZ012    分支机构信息�? 负责人代码在员工信息表中不存在或为空   13  
+//30  JHWZ012    分支机构信息? 负责人代码在员工信息表中不存在或为空   13  
 //select * from Branch_Info  where not exists( select distinct  1 from Staff_Info where BRANCH_INFO.Leader_Code = STAFF_INFO.STAFF_NO)
-//31  JHWZ012    分支机构信息�? 经营区域代码不是GB/T2260规定的行政区划代码或为空  2   
+//31  JHWZ012    分支机构信息? 经营区域代码不是GB/T2260规定的行政区划代码或为空  2   
 String T31="select * from Branch_Info where len(Branch_area_code)!=6";
 doSQL2EXL(cn, "C:\\0726\\T31.xls", T31);System.out.println("====>1");
 */
@@ -416,21 +416,21 @@ doSQL2EXL(cn, "C:\\0726\\T31.xls", T31);System.out.println("====>1");
 		
 		
 		/*20120808
-//		1	JHKJ002	缴费信息�? 应缴日期、到账日期和保单生效日期都在规定时间区间以前	58	
+//		1	JHKJ002	缴费信息? 应缴日期、到账日期和保单生效日期都在规定时间区间以前	58	
 String T01_CGHB  = " select * from CGHB_Prem_info where Payab_Date < '2012-01-01' and  Gained_Date < '2012-01-01' and Eff_Date <  '2012-01-01' ";
 doSQL2EXL(cn, "C:\\0808\\T01_CGHB.xls", T01_CGHB);
 String T01_CICAP = " select * from CICAP_Prem_info where Payab_Date < '2012-01-01' and  Gained_Date < '2012-01-01' and Eff_Date <  '2012-01-01' ";
 doSQL2EXL(cn, "C:\\0808\\T01_CICAP.xls", T01_CICAP);
 String T01_IPMI  = " select * from IPMI_Prem_info where Payab_Date < '2012-01-01' and  Gained_Date < '2012-01-01' and Eff_Date <  '2012-01-01' ";
 doSQL2EXL(cn, "C:\\0808\\T01_IPMI.xls", T01_IPMI);
-//		2	JHKJ002	缴费信息�? 应缴日期、到账日期和保单生效日期都在规定时间区间末以�?1	
+//		2	JHKJ002	缴费信息? 应缴日期、到账日期和保单生效日期都在规定时间区间末以?1	
 String T02_CGHB  = " select * from CGHB_Prem_info where Payab_Date > '2012-03-31 23:59:59' and Gained_Date > '2012-03-31 23:59:59' and  Eff_Date > '2012-03-31 23:59:59' ";
 doSQL2EXL(cn, "C:\\0808\\T02_CGHB.xls", T02_CGHB);
 String T02_CICAP = " select * from CICAP_Prem_info where Payab_Date > '2012-03-31 23:59:59' and Gained_Date > '2012-03-31 23:59:59' and  Eff_Date > '2012-03-31 23:59:59' ";
 doSQL2EXL(cn, "C:\\0808\\T02_CICAP.xls", T02_CICAP);
 String T02_IPMI  = " select * from IPMI_Prem_info where Payab_Date > '2012-03-31 23:59:59' and Gained_Date > '2012-03-31 23:59:59' and  Eff_Date > '2012-03-31 23:59:59' ";
 doSQL2EXL(cn, "C:\\0808\\T02_IPMI.xls", T02_IPMI);
-//		3	JHKJ005	报案信息�? 险种代码在险种代码表中不存在或为�?159	
+//		3	JHKJ005	报案信息? 险种代码在险种代码表中不存在或为?159	
 String T03_CGHB  = " select * from CGHB_claim_report  ct where ct.Plan_Code is null or not exists(select 1 from Plan_info where ct.Plan_Code = Plan_info.Plan_Code)  ";
 doSQL2EXL(cn, "C:\\0808\\T03_CGHB.xls", T03_CGHB);
 
@@ -438,7 +438,7 @@ String T03_NCS= " select * from NCS_claim_report  ct where ct.Plan_Code is null 
 doSQL2EXL(cn, "C:\\0808\\T03_CICAP.xls", T03_NCS);
 String T03_IPMI  = " select * from IPMI_claim_report  ct where ct.Plan_Code is null or not exists(select 1 from Plan_info where ct.Plan_Code = Plan_info.Plan_Code)  ";
 doSQL2EXL(cn, "C:\\0808\\T03_IPMI.xls", T03_IPMI);
-//		4	JHKJ006	赔案信息�? 报案日期、实付日期�?结案日期三�?大�?在取数区间以�?1	
+//		4	JHKJ006	赔案信息? 报案日期、实付日期?结案日期三?大?在取数区间以?1	
 String T04_CGHB  = " select * from CGHB_claim_main where End_Date<'2012-01-01' ";
 doSQL2EXL(cn, "C:\\0808\\T04_CGHB.xls", T04_CGHB);
 
@@ -446,7 +446,7 @@ String T04_NCS = " select * from NCS_claim_main where End_Date<'2012-01-01' ";
 doSQL2EXL(cn, "C:\\0808\\T04_CICAP.xls", T04_NCS);
 String T04_IPMI  = " select * from IPMI_claim_main where End_Date<'2012-01-01' ";
 doSQL2EXL(cn, "C:\\0808\\T04_IPMI.xls", T04_IPMI);
-//		5	JHKJ006	赔案信息�? 报案日期在取数区间末以后	1	
+//		5	JHKJ006	赔案信息? 报案日期在取数区间末以后	1	
 String T05_CGHB  = " select * from CGHB_claim_main where Docu_Date>'2012-03-31 23:59:59' ";
 doSQL2EXL(cn, "C:\\0808\\T05_CGHB.xls", T05_CGHB);
 
@@ -456,7 +456,7 @@ String T05_IPMI  = " select * from IPMI_claim_main where Docu_Date>'2012-03-31 2
 doSQL2EXL(cn, "C:\\0808\\T05_IPMI.xls", T05_IPMI);
 
 
-//		6	JHKJ006	赔案信息�?收付款方式为2�?时：对方银行帐号为空或不符合银行帐号�?��特征（如存在数字、位数大�?等）	2	
+//		6	JHKJ006	赔案信息?收付款方式为2?时：对方银行帐号为空或不符合银行帐号?特征（如存在数字、位数大?等）	2	
 String T06_CGHB  = " select *  from CGHB_claim_main WHERE CGHB_claim_main.CollectPay_Code IN('2','5') and (CGHB_claim_main.Pay_account_code IS NULL OR LEN(CGHB_claim_main.Pay_account_code) <=5 or CGHB_claim_main.Pay_account_code not like '%[0-9]%') ";
 doSQL2EXL(cn, "C:\\0808\\T06_CGHB.xls", T06_CGHB);
 String T06_NCS = " select *  from NCS_claim_main WHERE NCS_claim_main.CollectPay_Code IN('2','5') and (NCS_claim_main.Pay_account_code IS NULL OR LEN(NCS_claim_main.Pay_account_code) <=5 or NCS_claim_main.Pay_account_code not like '%[0-9]%') ";
@@ -464,7 +464,7 @@ doSQL2EXL(cn, "C:\\0808\\T06_CICAP.xls", T06_NCS);
 String T06_IPMI  = " select *  from IPMI_claim_main WHERE IPMI_claim_main.CollectPay_Code IN('2','5') and (IPMI_claim_main.Pay_account_code IS NULL OR LEN(IPMI_claim_main.Pay_account_code) <=5 or IPMI_claim_main.Pay_account_code not like '%[0-9]%') ";
 doSQL2EXL(cn, "C:\\0808\\T06_IPMI.xls", T06_IPMI);
 
-//		7	JHWZ005	新保单信息表- �?��渠道为代理或经纪业务时，中介机构代码在中介机构信息表中不存在或为�?96	
+//		7	JHWZ005	新保单信息表- ?渠道为代理或经纪业务时，中介机构代码在中介机构信息表中不存在或为?96	
 String T07_CGHB = " select * from CGHB_Pol_Main where (Agt_Code is null or Agt_Code = '' or not exists(select 1 from agt_code where CGHB_Pol_Main.Agt_Code = agt_code.Agt_Code)) and Busi_Src_Type in('220','221','229','230','300') ";
 doSQL2EXL(cn, "C:\\0808\\T07_CGHB.xls", T07_CGHB);
 String T07_CICAP = " select * from CICAP_Pol_Main where (Agt_Code is null or Agt_Code = '' or not exists(select 1 from agt_code where CICAP_Pol_Main.Agt_Code = agt_code.Agt_Code)) and Busi_Src_Type in('220','221','229','230','300') ";
@@ -478,21 +478,21 @@ String T08_CICAP = " select * from CICAP_Pol_Main where Agt_Code is not null and
 doSQL2EXL(cn, "C:\\0808\\T08_CICAP.xls", T08_CICAP);
 String T08_IPMI  = " select * from IPMI_Pol_Main where Agt_Code is not null and Agt_Code != '' and not exists ( select Agt_Code from agt_code where IPMI_Pol_Main.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T08_IPMI.xls", T08_IPMI);
-//		9	JHWZ006	缴费信息�? 投保人证件类型在证件类型代码表中不存在或为空	15	
+//		9	JHWZ006	缴费信息? 投保人证件类型在证件类型代码表中不存在或为空	15	
 String T09_CGHB  = " select * from CGHB_Prem_Info where not exists( select P from Id_Card_Type where CGHB_Prem_Info.App_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T09_CGHB.xls", T09_CGHB);
 String T09_CICAP = " select * from CICAP_Prem_Info where not exists( select P from Id_Card_Type where CICAP_Prem_Info.App_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T09_CICAP.xls", T09_CICAP);
 String T09_IPMI  = " select * from IPMI_Prem_Info where not exists( select P from Id_Card_Type where IPMI_Prem_Info.App_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T09_IPMI.xls", T09_IPMI);
-//		10	JHWZ006	缴费信息�? 缴费类型代码在缴�?领取类型代码基表中不存在或为�?182	
+//		10	JHWZ006	缴费信息? 缴费类型代码在缴?领取类型代码基表中不存在或为?182	
 String T10_CGHB  = " select * from CGHB_Prem_Info where not exists ( select P from Prem_Annuity_Type  where CGHB_Prem_Info.Prem_Type = PREM_ANNUITY_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T10_CGHB.xls", T10_CGHB);
 String T10_CICAP = " select * from CICAP_Prem_Info where not exists ( select P from Prem_Annuity_Type  where CICAP_Prem_Info.Prem_Type = PREM_ANNUITY_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T10_CICAP.xls", T10_CICAP);
 String T10_IPMI  = " select * from IPMI_Prem_Info where not exists ( select P from Prem_Annuity_Type  where IPMI_Prem_Info.Prem_Type = PREM_ANNUITY_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T10_IPMI.xls", T10_IPMI);
-//		11	JHWZ006	缴费信息�? 被保险人证件类型在证件类型代码表中不存在	127	
+//		11	JHWZ006	缴费信息? 被保险人证件类型在证件类型代码表中不存在	127	
 String T11_CGHB  = " select * from CGHB_Prem_Info where Ins_Idcard_Type is not null and Ins_Idcard_Type != '' and not exists( select P from Id_Card_Type where CGHB_Prem_Info.Ins_Idcard_Type = ID_CARD_TYPE.P)  ";
 doSQL2EXL(cn, "C:\\0808\\T11_CGHB.xls", T11_CGHB);
 String T11_CICAP = " select * from CICAP_Prem_Info where Ins_Idcard_Type is not null and Ins_Idcard_Type != '' and not exists( select P from Id_Card_Type where CICAP_Prem_Info.Ins_Idcard_Type = ID_CARD_TYPE.P)  ";
@@ -500,18 +500,18 @@ doSQL2EXL(cn, "C:\\0808\\T11_CICAP.xls", T11_CICAP);
 String T11_IPMI  = " select * from IPMI_Prem_Info where Ins_Idcard_Type is not null and Ins_Idcard_Type != '' and not exists( select P from Id_Card_Type where IPMI_Prem_Info.Ins_Idcard_Type = ID_CARD_TYPE.P)  ";
 doSQL2EXL(cn, "C:\\0808\\T11_IPMI.xls", T11_IPMI);
 
-//		12	JHWZ006	缴费信息�? 中介机构代码在中介机构信息表中不存在	95	
+//		12	JHWZ006	缴费信息? 中介机构代码在中介机构信息表中不存在	95	
 String T12_CGHB  = " select * from CGHB_Prem_Info where Agt_Code is not null and Agt_Code != ''  and not exists( select Agt_Code from agt_code where CGHB_Prem_Info.Agt_Code = AGT_CODE.AGT_CODE)  ";
 doSQL2EXL(cn, "C:\\0808\\T12_CGHB.xls", T12_CGHB);
 String T12_CICAP = " select * from CICAP_Prem_Info where Agt_Code is not null and Agt_Code != ''  and not exists( select Agt_Code from agt_code where CICAP_Prem_Info.Agt_Code = AGT_CODE.AGT_CODE)  ";
 doSQL2EXL(cn, "C:\\0808\\T12_CICAP.xls", T12_CICAP);
 String T12_IPMI  = " select * from IPMI_Prem_Info where Agt_Code is not null and Agt_Code != ''  and not exists( select Agt_Code from agt_code where IPMI_Prem_Info.Agt_Code = AGT_CODE.AGT_CODE)  ";
 doSQL2EXL(cn, "C:\\0808\\T12_IPMI.xls", T12_IPMI);
-//		13	JHWZ006	缴费信息�? 营销员代码在营销员信息表中不存在	372533	
+//		13	JHWZ006	缴费信息? 营销员代码在营销员信息表中不存在	372533	
 //String T13 = " select * from Prem_Info where Salesman_No is not null and Salesman_No != '' and not exists( select Salesman_No from Salesman_info where PREM_INFO.Salesman_No = SALESMAN_INFO.SALESMAN_NO)  ";
-//		14	JHWZ006	缴费信息�? 员工代码若不为空：员工代码在员工信息表中不存在�?应付员工绩效凭证号在财务凭证信息表中不存在或为空、员工直接绩效比例小于等于零	353153	
+//		14	JHWZ006	缴费信息? 员工代码若不为空：员工代码在员工信息表中不存在?应付员工绩效凭证号在财务凭证信息表中不存在或为空、员工直接绩效比例小于等于零	353153	
 //String T14 = " select * from Prem_Info where Staff_No is not null and Staff_No != '' and (not exists(select 1 from Staff_Info where Prem_Info.Staff_No = Staff_Info.Staff_No) or (not exists(select 1 from Voucher_Info where Prem_Info.PayabBonus_Vou_Code = Voucher_Info.Voucher_Code) or PayabBonus_Vou_Code is null or PayabBonus_Vou_Code = '') or Staff_Bonus_Rate <= 0) ";
-//		15	JHWZ006	缴费信息�? 收付款方式在收付款方式代码基表中不存在或为空	25	
+//		15	JHWZ006	缴费信息? 收付款方式在收付款方式代码基表中不存在或为空	25	
 
 String T15_CGHB  = " select * from CGHB_Prem_Info where not exists( select P from CollectPay_Code where CGHB_Prem_Info.CollectPay_Code = COLLECTPAY_CODE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T15_CGHB.xls", T15_CGHB);
@@ -519,196 +519,196 @@ String T15_CICAP = " select * from CICAP_Prem_Info where not exists( select P fr
 doSQL2EXL(cn, "C:\\0808\\T15_CICAP.xls", T15_CICAP);
 String T15_IPMI  = " select * from IPMI_Prem_Info where not exists( select P from CollectPay_Code where IPMI_Prem_Info.CollectPay_Code = COLLECTPAY_CODE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T15_IPMI.xls", T15_IPMI);
-//		16	JHWZ007	批单信息�? 险种代码在险种代码表中不存在或为�?33535	
+//		16	JHWZ007	批单信息? 险种代码在险种代码表中不存在或为?33535	
 String T16_CICAP = " select * from CICAP_Endo_Fee where not exists( select 1 from Plan_info where CICAP_Endo_Fee.Plan_Code = PLAN_INFO.PLAN_CODE)  ";
 doSQL2EXL(cn, "C:\\0808\\T16_CICAP.xls", T16_CICAP);
 String T16_IPMI  = " select * from IPMI_Endo_Fee where not exists( select 1 from Plan_info where IPMI_Endo_Fee.Plan_Code = PLAN_INFO.PLAN_CODE)  ";
 doSQL2EXL(cn, "C:\\0808\\T16_IPMI.xls", T16_IPMI);
 
-//		17	JHWZ007	批单信息�? 中介机构代码在中介机构信息表中不存在	396	
+//		17	JHWZ007	批单信息? 中介机构代码在中介机构信息表中不存在	396	
 String T17_CICAP = " select * from CICAP_Endo_Fee where Agt_Code is not null and Agt_Code != '' and not exists( select Agt_Code from agt_code where CICAP_Endo_Fee.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T17_CICAP.xls", T17_CICAP);
 String T17_IPMI  = " select * from IPMI_Endo_Fee where Agt_Code is not null and Agt_Code != '' and not exists( select Agt_Code from agt_code where IPMI_Endo_Fee.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T17_IPMI.xls", T17_IPMI);
-//		18	JHWZ007	批单信息�? 营销员代码在营销员信息表中不存在	1488713	
+//		18	JHWZ007	批单信息? 营销员代码在营销员信息表中不存在	1488713	
 //String T18 = " select * from Endo_Fee where Salesman_No is not null and Salesman_No != '' and not exists ( select 1 from Salesman_info where ENDO_FEE.Salesman_No = SALESMAN_INFO.SALESMAN_NO) ";
-//		19	JHWZ007	批单信息�? 银保专管员代码在银保专管员信息表中不存在	927	
+//		19	JHWZ007	批单信息? 银保专管员代码在银保专管员信息表中不存在	927	
 String T19_CICAP = " select * from CICAP_Endo_Fee where Speciman_No is not null and Speciman_No != '' and not exists( select 1 from Banc_Speci_Info where CICAP_Endo_Fee.Speciman_No = BANC_SPECI_INFO.BANC_SPECI_NO) ";
 doSQL2EXL(cn, "C:\\0808\\T19_CICAP.xls", T19_CICAP);
 String T19_IPMI  = " select * from IPMI_Endo_Fee where Speciman_No is not null and Speciman_No != '' and not exists( select 1 from Banc_Speci_Info where IPMI_Endo_Fee.Speciman_No = BANC_SPECI_INFO.BANC_SPECI_NO) ";
 doSQL2EXL(cn, "C:\\0808\\T19_IPMI.xls", T19_IPMI);
-//		20	JHWZ007	批单信息�? 员工代码在员工信息表中不存在	70234	
+//		20	JHWZ007	批单信息? 员工代码在员工信息表中不存在	70234	
 String T20_CICAP = " select * from CICAP_Endo_Fee where Staff_No is not null and Staff_No != '' and not exists( select 1 from Staff_Info where CICAP_Endo_Fee.Staff_No = STAFF_INFO.STAFF_NO) ";
 doSQL2EXL(cn, "C:\\0808\\T20_CICAP.xls", T20_CICAP);
 String T20_IPMI  = " select * from IPMI_Endo_Fee where Staff_No is not null and Staff_No != '' and not exists( select 1 from Staff_Info where IPMI_Endo_Fee.Staff_No = STAFF_INFO.STAFF_NO) ";
 doSQL2EXL(cn, "C:\\0808\\T20_IPMI.xls", T20_IPMI);
-//		21	JHWZ007	批单信息�? 投保日期、保单生效日期�?发生日期（批改日期）、批单生效日期为�?47	
+//		21	JHWZ007	批单信息? 投保日期、保单生效日期?发生日期（批改日期）、批单生效日期为?47	
 String T21_CICAP = " select * from  CICAP_Endo_Fee where App_Date is null or Pol_Eff_Date is null or Edr_Eff_Date is null or Proc_Date is null  ";
 doSQL2EXL(cn, "C:\\0808\\T21_CICAP.xls", T21_CICAP);
 String T21_IPMI  = " select * from  IPMI_Endo_Fee where App_Date is null or Pol_Eff_Date is null or Edr_Eff_Date is null or Proc_Date is null  ";
 doSQL2EXL(cn, "C:\\0808\\T21_IPMI.xls", T21_IPMI);
-//		22	JHWZ007	批单信息�? 批文、投保人证件号码、被保人名称为空	1488698	 
+//		22	JHWZ007	批单信息? 批文、投保人证件号码、被保人名称为空	1488698	 
 //String T22 = " select * from  Endo_Fee where Endo_Content is null or App_Idcard_No is null or InsName is null  ";
-//		23	JHWZ007	批单信息�? 非现金收款方式的对方银行账号为空	1488698	
+//		23	JHWZ007	批单信息? 非现金收款方式的对方银行账号为空	1488698	
 //String T23 = " select * from Endo_Fee where (Bank_account_code is null or Bank_account_code='') and CollectPay_Way_Code != '1' ";
-//		24	JHWZ009	报案信息�? 机构代码在分支机构信息表中不存在或为�?159	
+//		24	JHWZ009	报案信息? 机构代码在分支机构信息表中不存在或为?159	
 String T24_CGHB  = " select * from CGHB_claim_report where not exists (select Branch_Code from Branch_Info where CGHB_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T24_CGHB.xls", T24_CGHB);
 String T24_NCS = " select * from NCS_claim_report where not exists (select Branch_Code from Branch_Info where NCS_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T24_CICAP.xls", T24_NCS);
 String T24_IPMI  = " select * from IPMI_claim_report where not exists (select Branch_Code from Branch_Info where IPMI_claim_report.Branch_Code = BRANCH_INFO.BRANCH_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T24_IPMI.xls", T24_IPMI);
-//		25	JHWZ010	赔案信息�? 险种代码在险种代码表中不存在或为�?52	
+//		25	JHWZ010	赔案信息? 险种代码在险种代码表中不存在或为?52	
 String T25_CGHB  = " select * from CGHB_claim_main where not exists( select 1 from Plan_info where CGHB_claim_main.Plan_Code = PLAN_INFO.PLAN_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T25_CGHB.xls", T25_CGHB);
 String T25_NCS = " select * from NCS_claim_main where not exists( select 1 from Plan_info where NCS_claim_main.Plan_Code = PLAN_INFO.PLAN_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T25_CICAP.xls", T25_NCS);
 String T25_IPMI  = " select * from IPMI_claim_main where not exists( select 1 from Plan_info where IPMI_claim_main.Plan_Code = PLAN_INFO.PLAN_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T25_IPMI.xls", T25_IPMI);
-//		26	JHWZ010	赔案信息�? 机构代码在分支机构信息表中不存在或为�?171	
+//		26	JHWZ010	赔案信息? 机构代码在分支机构信息表中不存在或为?171	
 String T26_CGHB  = " select * from CGHB_claim_main where not exists( select 1 from Branch_Info where CGHB_claim_main.Branch_Code = BRANCH_INFO.BRANCH_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T26_CGHB.xls", T26_CGHB);
 String T26_NCS = " select * from NCS_claim_main where not exists( select 1 from Branch_Info where NCS_claim_main.Branch_Code = BRANCH_INFO.BRANCH_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T26_CICAP.xls", T26_NCS);
 String T26_IPMI  = " select * from IPMI_claim_main where not exists( select 1 from Branch_Info where IPMI_claim_main.Branch_Code = BRANCH_INFO.BRANCH_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T26_IPMI.xls", T26_IPMI);
-//		27	JHWZ010	赔案信息�? 投保人证件类型在证件类型代码表中不存在或为空	1	
+//		27	JHWZ010	赔案信息? 投保人证件类型在证件类型代码表中不存在或为空	1	
 String T27_CGHB  = " select * from CGHB_claim_main where not exists( select P from Id_Card_Type where CGHB_claim_main.App_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T27_CGHB.xls", T27_CGHB);
 String T27_NCS = " select * from NCS_claim_main where not exists( select P from Id_Card_Type where NCS_claim_main.App_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T27_CICAP.xls", T27_NCS);
 String T27_IPMI  = " select * from IPMI_claim_main where not exists( select P from Id_Card_Type where IPMI_claim_main.App_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T27_IPMI.xls", T27_IPMI);
-//		28	JHWZ010	赔案信息�? 领取人证件类型在证件类型代码表中不存在或为空	1	
+//		28	JHWZ010	赔案信息? 领取人证件类型在证件类型代码表中不存在或为空	1	
 String T28_CGHB  = " select * from CGHB_claim_main where Payab_Amt_cnvt != 0 and not exists ( select P from Id_Card_Type where CGHB_claim_main.Paid_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T28_CGHB.xls", T28_CGHB);
 String T28_NCS = " select * from NCS_claim_main where Payab_Amt_cnvt != 0 and not exists ( select P from Id_Card_Type where NCS_claim_main.Paid_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T28_CICAP.xls", T28_NCS);
 String T28_IPMI  = " select * from IPMI_claim_main where Payab_Amt_cnvt != 0 and not exists ( select P from Id_Card_Type where IPMI_claim_main.Paid_Idcard_Type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T28_IPMI.xls", T28_IPMI);
-//		29	JHWZ010	赔案信息�? 中介机构代码在中介机构信息表中不存在	171	
+//		29	JHWZ010	赔案信息? 中介机构代码在中介机构信息表中不存在	171	
 String T29_CGHB  = " select * from CGHB_claim_main where Agt_Code is not null and Agt_Code != ''  and not exists( select 1 from agt_code where CGHB_claim_main.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T29_CGHB.xls", T29_CGHB);
 String T29_NCS = " select * from NCS_claim_main where Agt_Code is not null and Agt_Code != ''  and not exists( select 1 from agt_code where NCS_claim_main.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T29_CICAP.xls", T29_NCS);
 String T29_IPMI  = " select * from IPMI_claim_main where Agt_Code is not null and Agt_Code != ''  and not exists( select 1 from agt_code where IPMI_claim_main.Agt_Code = AGT_CODE.AGT_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T29_IPMI.xls", T29_IPMI);
-//		30	JHWZ010	赔案信息�? 员工代码在员工信息表中不存在	1	
+//		30	JHWZ010	赔案信息? 员工代码在员工信息表中不存在	1	
 String T30_CGHB  = " select * from CGHB_claim_main where Staff_No is not null and Staff_No != ''  and not exists( select 1 from Staff_Info where CGHB_claim_main.Staff_No = STAFF_INFO.STAFF_NO) ";
 doSQL2EXL(cn, "C:\\0808\\T30_CGHB.xls", T30_CGHB);
 String T30_NCS = " select * from NCS_claim_main where Staff_No is not null and Staff_No != ''  and not exists( select 1 from Staff_Info where NCS_claim_main.Staff_No = STAFF_INFO.STAFF_NO) ";
 doSQL2EXL(cn, "C:\\0808\\T30_CICAP.xls", T30_NCS);
 String T30_IPMI  = " select * from IPMI_claim_main where Staff_No is not null and Staff_No != ''  and not exists( select 1 from Staff_Info where IPMI_claim_main.Staff_No = STAFF_INFO.STAFF_NO) ";
 doSQL2EXL(cn, "C:\\0808\\T30_IPMI.xls", T30_IPMI);
-//		31	JHWZ010	赔案信息�? 到账日期在取数区间内的应付赔款凭证号，在财务凭证表中不存�?6030	
+//		31	JHWZ010	赔案信息? 到账日期在取数区间内的应付赔款凭证号，在财务凭证表中不存?6030	
 //String T31 = " select * from claim_main where Gained_Date between '2012-01-01'and '2012-03-31 23:59:59' and Payab_Amt_cnvt is not null and Payab_Amt_cnvt != 0 and not exists( select 1 from Voucher_Info where CLAIM_MAIN.Payab_Vou_Code = VOUCHER_INFO.VOUCHER_CODE) ";
-//		32	JHWZ010	赔案信息�? 到账日期在取数区间内的实付赔款凭证号，在财务凭证表中不存�?6030	
+//		32	JHWZ010	赔案信息? 到账日期在取数区间内的实付赔款凭证号，在财务凭证表中不存?6030	
 //String T32 = " select * from claim_main where Gained_Date between '2012-01-01'and '2012-03-31 23:59:59' and Paid_Amt_cnvt is not null and Paid_Amt_cnvt != 0 and not exists( select 1  from Voucher_Info where CLAIM_MAIN.Paid_Vou_Code = VOUCHER_INFO.VOUCHER_CODE) ";
-//		33	JHWZ010	赔案信息�? �?��渠道为直�?��，员工代码为�?2000	
+//		33	JHWZ010	赔案信息? ?渠道为直?，员工代码为?2000	
 String T33_CGHB  = " select * from CGHB_claim_main where (Staff_No is null or Staff_No='') and Busi_Src_Type like ('1%') ";
 doSQL2EXL(cn, "C:\\0808\\T33_CGHB.xls", T33_CGHB);
 String T33_NCS = " select * from NCS_claim_main where (Staff_No is null or Staff_No='') and Busi_Src_Type like ('1%') ";
 doSQL2EXL(cn, "C:\\0808\\T33_CICAP.xls", T33_NCS);
 String T33_IPMI  = " select * from IPMI_claim_main where (Staff_No is null or Staff_No='') and Busi_Src_Type like ('1%') ";
 doSQL2EXL(cn, "C:\\0808\\T33_IPMI.xls", T33_IPMI);
-//		34	JHWZ010	赔案信息�? �?��渠道为银行邮政代理时，银保专管员代码为空	14	
+//		34	JHWZ010	赔案信息? ?渠道为银行邮政代理时，银保专管员代码为空	14	
 String T34_CGHB  = " select * from CGHB_claim_main where (Speciman_No is null or Speciman_No='') and Busi_Src_Type = '221' ";
 doSQL2EXL(cn, "C:\\0808\\T34_CGHB.xls", T34_CGHB);
 String T34_NCS = " select * from NCS_claim_main where (Speciman_No is null or Speciman_No='') and Busi_Src_Type = '221' ";
 doSQL2EXL(cn, "C:\\0808\\T34_CICAP.xls", T34_NCS);
 String T34_IPMI  = " select * from IPMI_claim_main where (Speciman_No is null or Speciman_No='') and Busi_Src_Type = '221' ";
 doSQL2EXL(cn, "C:\\0808\\T34_IPMI.xls", T34_IPMI);
-//		35	JHWZ010	赔案信息�? 非现金收款方式的对方银行账号为空	988	
+//		35	JHWZ010	赔案信息? 非现金收款方式的对方银行账号为空	988	
 String T35_CGHB  = " select * from CGHB_claim_main where (Pay_account_code is null or Pay_account_code='') and CollectPay_Code != '1' ";
 doSQL2EXL(cn, "C:\\0808\\T35_CGHB.xls", T35_CGHB);
 String T35_NCS = " select * from NCS_claim_main where (Pay_account_code is null or Pay_account_code='') and CollectPay_Code != '1' ";
 doSQL2EXL(cn, "C:\\0808\\T35_CICAP.xls", T35_NCS);
 String T35_IPMI  = " select * from IPMI_claim_main where (Pay_account_code is null or Pay_account_code='') and CollectPay_Code != '1' ";
 doSQL2EXL(cn, "C:\\0808\\T35_IPMI.xls", T35_IPMI);
-//		36	JHWZ011	单证信息�? 使用机构代码在分支机构信息表中不存在或为�?3200833	
+//		36	JHWZ011	单证信息? 使用机构代码在分支机构信息表中不存在或为?3200833	
 //String T36 = " select * from Bill_Info where not exists( select 1 from Branch_Info  where BILL_INFO.Branch_Code = BRANCH_INFO.BRANCH_CODE) ";
-//		37	JHWZ012	财务凭证信息�? 没有期初余额记录	1	
+//		37	JHWZ012	财务凭证信息? 没有期初余额记录	1	
 String T37 = " select * from voucher_info where Is_Original = 'Y' ";
 doSQL2EXL(cn, "C:\\0808\\T37.xls", T37);
-//		38	JHWZ012	险种代码�? 停止�?��日期存在空�?,或日期关系不正确	5	
+//		38	JHWZ012	险种代码? 停止?日期存在空?,或日期关系不正确	5	
 String T38="select * from plan_info where StopDate is null or Startdate < stopdate";
 doSQL2EXL(cn, "C:\\0808\\T38.xls", T38);
-//		39	JHWZ012	中介机构信息�? 获得许可证日期�?许可证到期日期�?签约日期、协议到期日存在空�?,或日期关系不正确	444	
+//		39	JHWZ012	中介机构信息? 获得许可证日期?许可证到期日期?签约日期、协议到期日存在空?,或日期关系不正确	444	
 String T39 = " select * from AGT_CODE where  STARTDATE IS NULL OR STARTDATE>=ENDDATE OR ENDDATE IS NULL OR SIGNDATE = '1900-01-01' OR QUITDATE ='1900-01-01' OR SIGNDATE IS NULL OR QUITDATE IS NULL  ";
 doSQL2EXL(cn, "C:\\0808\\T39.xls", T39);
-//		40	JHWZ012	员工信息�? 证件类型在证件类型代码表中不存在或为�?1	
+//		40	JHWZ012	员工信息? 证件类型在证件类型代码表中不存在或为?1	
 String T40 = " select * from Staff_Info  where not exists( select 1 from Id_Card_Type where STAFF_INFO.Id_type = ID_CARD_TYPE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T40.xls", T40);
-//		41	JHWZ012	员工信息�? �?��分支机构在分支机构信息表中不存在或为�?5	
+//		41	JHWZ012	员工信息? ?分支机构在分支机构信息表中不存在或为?5	
 String T41 = " select * from Staff_Info  where not exists( select 1 from Branch_info where STAFF_INFO.Depart_info = BRANCH_INFO.BRANCH_CODE) ";
 doSQL2EXL(cn, "C:\\0808\\T41.xls", T41);
 //		42	JHWZ012	银保专管员信息表- 学历在学历代码基表中不存在或为空	754	
 String T42 = " select * from Banc_Speci_Info  where not exists( select 1 from Edu_Degree_Code where BANC_SPECI_INFO.Edu_Degree = EDU_DEGREE_CODE.P) ";
 doSQL2EXL(cn, "C:\\0808\\T42.xls", T42);
-//		43	JHWZ012	银保专管员信息表- �?��分支机构在分支机构信息表中不存在或为�?754	
+//		43	JHWZ012	银保专管员信息表- ?分支机构在分支机构信息表中不存在或为?754	
 String T43 = " select * from Banc_Speci_Info  where not exists( select 1 from Branch_info where BRANCH_INFO.BRANCH_CODE = BANC_SPECI_INFO.Branch) ";
 doSQL2EXL(cn, "C:\\0808\\T43.xls", T43);
-//		44	JHWZ012	分支机构信息�? 经营区域代码不是GB/T2260规定的行政区划代码或为空	2	
+//		44	JHWZ012	分支机构信息? 经营区域代码不是GB/T2260规定的行政区划代码或为空	2	
 		
 */
 
 		
 		
 
-		//		1	JHKJ002	缴费信息�? 应缴日期、到账日期和保单生效日期都在规定时间区间以前	26	
+		//		1	JHKJ002	缴费信息? 应缴日期、到账日期和保单生效日期都在规定时间区间以前	26	
 String T01 = "select * from Prem_info where Payab_Date < '2012-01-01' and  Gained_Date < '2012-01-01' and Eff_Date <  '2012-01-01'";
 
-		//		2	JHWZ005	新保单信息表- �?��渠道为代理或经纪业务时，中介机构代码在中介机构信息表中不存在或为�?4	
+		//		2	JHWZ005	新保单信息表- ?渠道为代理或经纪业务时，中介机构代码在中介机构信息表中不存在或为?4	
 String T02 = "select * from Pol_Main where (Agt_Code is null or Agt_Code = '' or not exists(select 1 from agt_code where Pol_Main.Agt_Code = agt_code.Agt_Code)) and Busi_Src_Type in('220','221','229','230','300')";
 
 		//		3	JHWZ005	新保单信息表- 中介机构代码在中介机构信息表中不存在	7	
 String T03 = "select * from Pol_Main where Agt_Code is not null and Agt_Code != '' and not exists ( select Agt_Code from agt_code where POL_MAIN.Agt_Code = AGT_CODE.AGT_CODE)";
 
-		//		4	JHWZ006	缴费信息�? 被保险人证件类型在证件类型代码表中不存在	112	
+		//		4	JHWZ006	缴费信息? 被保险人证件类型在证件类型代码表中不存在	112	
 String T04 = "select * from Prem_Info where Ins_Idcard_Type is not null and Ins_Idcard_Type != '' and not exists( select P from Id_Card_Type where PREM_INFO.Ins_Idcard_Type = ID_CARD_TYPE.P) ";
 
-		//		10	JHWZ007	批单信息�? 投保日期、保单生效日期�?发生日期（批改日期）、批单生效日期为�?47	
+		//		10	JHWZ007	批单信息? 投保日期、保单生效日期?发生日期（批改日期）、批单生效日期为?47	
 String T10 = "select * from  Endo_Fee where App_Date is null or Pol_Eff_Date is null or Edr_Eff_Date is null or Proc_Date is null ";
 
-		//		13	JHWZ012	财务凭证信息�? 没有期初余额记录	1	
+		//		13	JHWZ012	财务凭证信息? 没有期初余额记录	1	
 String T13 = "select * from voucher_info where Is_Original = 'Y'";
 
-		//		14	JHWZ012	险种代码�? 停止�?��日期存在空�?,或日期关系不正确	5	
+		//		14	JHWZ012	险种代码? 停止?日期存在空?,或日期关系不正确	5	
 String T14 = "select * from voucher_info where Is_Original = 'Y'";
 
-		//		15	JHWZ012	中介机构信息�? 获得许可证日期�?许可证到期日期�?签约日期、协议到期日存在空�?,或日期关系不正确	500	
+		//		15	JHWZ012	中介机构信息? 获得许可证日期?许可证到期日期?签约日期、协议到期日存在空?,或日期关系不正确	500	
 String T15 = "select * from AGT_CODE where  STARTDATE IS NULL OR STARTDATE>=ENDDATE OR ENDDATE IS NULL OR SIGNDATE = '1900-01-01' OR QUITDATE ='1900-01-01' OR SIGNDATE IS NULL OR QUITDATE IS NULL ";
 
-		//		16	JHWZ012	中介机构信息�? 中介机构类别在中介机构类别基表中不存在或为空	1	
+		//		16	JHWZ012	中介机构信息? 中介机构类别在中介机构类别基表中不存在或为空	1	
 String T16 = "select * from agt_code  where not exists( select A from agt_org_type_tbl where AGT_CODE.agt_org_type = AGT_ORG_TYPE_TBL.A)";
 
-		//		17	JHWZ012	员工信息�? 证件类型在证件类型代码表中不存在或为�?1	
+		//		17	JHWZ012	员工信息? 证件类型在证件类型代码表中不存在或为?1	
 String T17 = "select * from Staff_Info  where not exists( select 1 from Id_Card_Type where STAFF_INFO.Id_type = ID_CARD_TYPE.P)";
 
-		//		18	JHWZ012	员工信息�? �?��分支机构在分支机构信息表中不存在或为�?5	
+		//		18	JHWZ012	员工信息? ?分支机构在分支机构信息表中不存在或为?5	
 String T18 = "select * from Staff_Info  where not exists( select 1 from Branch_info where STAFF_INFO.Depart_info = BRANCH_INFO.BRANCH_CODE)";
 
 		//		19	JHWZ012	银保专管员信息表- 学历在学历代码基表中不存在或为空	754	
 String T19 = "select * from Banc_Speci_Info  where not exists( select 1 from Edu_Degree_Code where BANC_SPECI_INFO.Edu_Degree = EDU_DEGREE_CODE.P)";
 
-		//		20	JHWZ012	银保专管员信息表- �?��分支机构在分支机构信息表中不存在或为�?754	
+		//		20	JHWZ012	银保专管员信息表- ?分支机构在分支机构信息表中不存在或为?754	
 String T20 = "select * from Banc_Speci_Info  where not exists( select 1 from Branch_info where BRANCH_INFO.BRANCH_CODE = BANC_SPECI_INFO.Branch)";
 
-		//		21	JHWZ012	分支机构信息�? 经营区域代码不是GB/T2260规定的行政区划代码或为空	2	
+		//		21	JHWZ012	分支机构信息? 经营区域代码不是GB/T2260规定的行政区划代码或为空	2	
 		
 		
 		
-//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\20120731\\副本Branch_Info分支机构信息�?0730.xls","Branch_Info", 6, 1, 14);
+//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\20120731\\副本Branch_Info分支机构信息?0730.xls","Branch_Info", 6, 1, 14);
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\20120731\\副本Staff_info_new_leader.xls","Staff_Info", 13, 1, 6);
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\PremInfo1.xls","Ipmi_Prem_info", 52, 1, 16);
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\Prem_Info2.xls","CGHB_Prem_info", 52, 1, 183);
 		
-//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\Plan_infor险种代码�?20120718.xls","Plan_info", 16, 1, 673);
-//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\agt_code中介机构信息�?(3).xls","Agt_Code", 10, 1, 468);
+//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\Plan_infor险种代码?20120718.xls","Plan_info", 16, 1, 673);
+//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\agt_code中介机构信息?(3).xls","Agt_Code", 10, 1, 468);
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\CGHB_Agt_Code.xls","Agt_Code", 10, 1, 24);
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\副本Banc_Speci_Info银保专管员信息表.xls","Banc_Speci_Info",15, 1,755);
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\副本信诺资料CMBYC补充.xls","staff_info","2","0",20);
-//		importByEXL (cn, "C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\Plan_infor险种代码�?20120718.xls", "Plan_info",16, 1, 673) ;
+//		importByEXL (cn, "C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\Plan_infor险种代码?20120718.xls", "Plan_info",16, 1, 673) ;
 //		importByEXL(cn,"C:\\agt_code.xls","agt_code","1","0",433);
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\ipmi\\claim_main.xls","ipmi_claim_main","1","0",2);
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\CIRC\\ipmi\\claim_report.xls","ipmi_claim_report","1","0",2);
@@ -833,13 +833,13 @@ String T20 = "select * from Banc_Speci_Info  where not exists( select 1 from Bra
 		
 		
 		//unformat excel to formated excel begin
-//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\manual files_updated\\manual files_updated\\agt_code中介机构信息�?xls", 
+//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\manual files_updated\\manual files_updated\\agt_code中介机构信息?xls", 
 //				"agt_code",new String[]{"Agt_Code","Agt_Name","Agt_Address","agt_org_type","agt_busi_num","StartDate","EndDate","SignDate","QuitDate","IsULQulifd"});
 //		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\manual files_updated\\manual files_updated\\Banc_Speci_Info银保专管员信息表.xls",
 //				"Banc_Speci_Info",new String[]{"Banc_Speci_No","Banc_Speci_Name","Sex","Id_type","Idno","quano","JoinDate","LeaveDate","Edu_Degree","Accreditation","Branch","Rank","Source","IsCompliant","IsULQulifd"});
-//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\manual files_updated\\manual files_updated\\Branch_Info分支机构信息�?xls", 
+//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\manual files_updated\\manual files_updated\\Branch_Info分支机构信息?xls", 
 //				"Branch_Info",new String[]{"Branch_Code","Branch_ID","Branch_Name","Branch_Address	","Branch_Level","UP_Branch_Code","Branch_Busi_num","StartDate","EndDate","Leader_Code","Branch_area_code"});
-//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\manual files_updated\\manual files_updated\\Staff info员工信息�?xls", 
+//		importByEXL(cn,"C:\\Documents and Settings\\b3wang\\桌面\\manual files_updated\\manual files_updated\\Staff info员工信息?xls", 
 //				"Staff_info",new String[]{"Staff_No","Staff_Name","Sex","Id_type","Idno","quano","JoinDate","LeaveDate","Edu_Degree","Accreditation","Depart_info","Is_Leader","Staff_Rank"});
 //		String sql1 = "select Agt_Code,Agt_Name,Agt_Address,agt_org_type,agt_busi_num,StartDate,EndDate,SignDate,QuitDate,IsULQulifd from agt_code ";
 //		String sql2 = "select Banc_Speci_No,Banc_Speci_Name,Sex,Id_type,Idno,quano,JoinDate,LeaveDate,Edu_Degree,Accreditation,Branch,Rank,Source,IsCompliant,IsULQulifd from Banc_Speci_Info ";

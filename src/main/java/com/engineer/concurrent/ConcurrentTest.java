@@ -35,7 +35,6 @@ import sun.misc.Unsafe;
  */
 public class ConcurrentTest {
 	/**
-	 * 
 	 * @param args
 	 * @throws InterruptedException
 	 * @throws BrokenBarrierException
@@ -54,29 +53,29 @@ public class ConcurrentTest {
 		CyclicBarrier cyclicBarrier = new CyclicBarrier(10);
 		cyclicBarrier.await();
 	}
-	ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
-	
-	volatile int value;
+	private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+
+	private volatile int value;
 	private static final Unsafe unsafe = Unsafe.getUnsafe();
 	private static final long valueOffset;
 
     static {
       try {
-        valueOffset = unsafe.objectFieldOffset
-            (AtomicInteger.class.getDeclaredField("value"));
+        valueOffset = unsafe.objectFieldOffset(AtomicInteger.class.getDeclaredField("value"));
       } catch (Exception ex) { throw new Error(ex); }
     }
-	
+
 	void testCAS() {
-		
+
 	}
-	
+
 	public final int incrementAndGet() {
 	    for (;;) {
-	        int current = get();
+	        int current = this.get();
 	        int next = current + 1;
-	        if (compareAndSet(current, next))
+	        if (this.compareAndSet(current, next)) {
 	            return next;
+	        }
 	    }
 	}
 
